@@ -48,8 +48,6 @@
                 <groupId>org.amqphub.quarkus</groupId>
                 <artifactId>quarkus-qpid-jms-deployment</artifactId>
                 <version>${quarkus-qpid-jms.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

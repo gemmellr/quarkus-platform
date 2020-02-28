@@ -39,8 +39,6 @@
                 <groupId>org.amqphub.quarkus</groupId>
                 <artifactId>quarkus-qpid-jms</artifactId>
                 <version>${quarkus-qpid-jms.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.apache.qpid</groupId>
