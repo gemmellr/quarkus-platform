@@ -53,7 +53,9 @@
              mvn validate -Pregen -N
         -->
         <camel-quarkus.version>1.0.0-M3</camel-quarkus.version>
+
         <quarkus-qpid-jms.version>0.11.2</quarkus-qpid-jms.version>
+        <qpid-jms.version>0.48.0</qpid-jms.version>
 
         <flatten-plugin.version>1.1.0</flatten-plugin.version>
         <rpkgtests-maven-plugin.version>0.7.0</rpkgtests-maven-plugin.version>
