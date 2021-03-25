@@ -41,8 +41,10 @@ jobs:
         uses: joschi/setup-jdk@e87a7cec853d2dd7066adf837fe12bf0f3d45e52
         with:
           java-version: ${{ matrix.java }}
-      - name: Build with Maven
-        run: export LANG=en_US MAVEN_OPTS=-Xmx3072m && mvn -B clean install --settings .github/mvn-settings.xml
+      - name: Initial Run To Populate Main Deps
+        run: export LANG=en_US MAVEN_OPTS=-Xmx3072m && mvn -B clean install -DskipTests -Dquarkus-qpid-jms.version=0.23.0 --settings .github/mvn-settings.xml
+      - name: Build and Test with Maven
+        run: export LANG=en_US MAVEN_OPTS=-Xmx3072m && mvn -B clean install -Pstaging --settings .github/mvn-settings.xml
       - name: Delete Local Artifacts From Cache
         shell: bash
         run: rm -rf ~/.m2/repository/io/quarkus/quarkus-universe-bom*
