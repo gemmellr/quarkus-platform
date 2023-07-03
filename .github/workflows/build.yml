@@ -68,7 +68,15 @@ jobs:
           distribution: temurin
           java-version: ${{ matrix.java }}
       - name: Build with Maven
-        run: export MAVEN_OPTS=-Xmx6G && ./mvnw -B clean install --settings .github/mvn-settings.xml --fail-at-end
+        run: |
+          export MAVEN_OPTS=-Xmx6G && ./mvnw -B clean install --settings .github/mvn-settings.xml --fail-at-end -DskipTests
+          cd generated-platform-project/quarkus-camel/integration-tests/camel-quarkus-integration-test-jms-artemis-client/
+          ../../../../mvnw -B clean install --settings ../../../../.github/mvn-settings.xml
+          cd ../camel-quarkus-integration-test-jms-qpid-amqp-client
+          ../../../../mvnw -B clean install --settings ../../../../.github/mvn-settings.xml
+          cd ../camel-quarkus-integration-test-jta
+          ../../../../mvnw -B clean install --settings ../../../../.github/mvn-settings.xml
+
       - name: Delete Local Artifacts From Cache
         shell: bash
         run: rm -rf ~/.m2/repository/io/quarkus/quarkus-universe-bom*
